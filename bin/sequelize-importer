@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    beautify = require('js-beautify').js_beautify,
+    mkdirp = require('mkdirp'),
+    Path = require('path'),
+    importer = require('../index'),
+    stdin = require('stdin'),
+    fs = require('fs');
+
+
+function run( program, source ){
+    var tokens = importer.tokenize( source ),
+        output = null,
+        ast = importer.parser( tokens );
+
+    if( program.ast ){
+        output = JSON.stringify(ast, null, 4);
+    }
+    else {
+        output = beautify(importer.render( ast ));
+    }
+
+
+    if( program.output ){
+        mkdirp.sync( Path.dirname( program.output ) );
+
+        fs.writeFile( program.output, output, function( err ){
+            if( err ) throw err;
+            console.log( 'Wrote output to %s', program.output );
+            process.exit();
+        });
+
+        return;
+    }
+
+    console.log( output );
+}
+
+program
+    .command('*')
+    .description('Parse mysql and output the AST')
+    .action(function( source ) {
+        if( source === '-' ){
+            stdin( function( source ){
+                run( program, source );
+            });
+            return;
+        }
+
+        fs.readFile( source, function(err, source){
+            if( err ) throw err;
+            run( program, source.toString() );
+        });
+    });
+
+
+program
+  .version('0.0.1')
+  .option('-a, --ast', 'Just render the AST')
+  .option('-o, --output [file]', 'Output file', String )
+  .parse(process.argv);
+
+if( program.args.length === 0 ) program.help();
