@@ -1,0 +1,26 @@
+{
+    "name": "sequelize-importer",
+    "version": "0.0.1",
+    "description": "Create models for sequelize from MySQL CREATE syntax",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/mvhenten/sequelize-importer.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mvhenten/sequelize-importer/issues"
+    },
+    "homepage": "https://github.com/mvhenten/sequelize-importer",
+    "devDependencies": {
+        "jshint": "^2.5.2",
+        "js-beautify": "^1.5.1"
+    },
+    "dependencies": {
+        "lex": "^1.7.6"
+    }
+}
