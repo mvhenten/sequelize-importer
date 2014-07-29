@@ -17,8 +17,7 @@
     },
     "homepage": "https://github.com/mvhenten/sequelize-importer",
     "devDependencies": {
-        "jshint": "^2.5.2",
-        "js-beautify": "^1.5.1"
+        "jshint": "^2.5.2"
     },
     "bin": {
         "sequelize-importer": "./bin/sequelize-importer"
