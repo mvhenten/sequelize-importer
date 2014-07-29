@@ -42,6 +42,7 @@ program
     .action(function( source ) {
         if( source === '-' ){
             stdin( function( source ){
+                console.log( source );
                 run( program, source );
             });
             return;
