@@ -21,6 +21,7 @@
         "js-beautify": "^1.5.1"
     },
     "dependencies": {
-        "lex": "^1.7.6"
+        "lex": "^1.7.6",
+        "stdin": "0.0.1"
     }
 }
