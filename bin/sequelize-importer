@@ -21,7 +21,6 @@ function run( program, source ){
         output = beautify(importer.render( ast ));
     }
 
-
     if( program.output ){
         mkdirp.sync( Path.dirname( program.output ) );
 
